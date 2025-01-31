@@ -1,0 +1,101 @@
+.forecast-list-container {
+  overflow-x: auto;
+  margin: 0 auto;
+  white-space: nowrap;
+  display: flex;
+}
+
+.forecast-item {
+  padding: 0;
+  margin: 5px 0;
+}
+
+.forecast-item-header {
+  font-weight: bold;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  list-style: none;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 60px;
+  height: 100%;
+  background-color: cadetblue;
+  z-index: 2;
+  padding: 0;
+  margin: 5px 0;
+  color: white;
+}
+
+.forecast-item-header li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  border-bottom: solid 1px #dfe4f0;
+  border-left: solid 1px #dfe4f0;
+  padding: 0 8px;
+}
+
+.forecast-item-body {
+  position: relative;
+  display: flex;
+  flex: 1;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.forecast-item-body li:first-child {
+  border-top: solid 1px #dfe4f0;
+}
+
+.forecast-item-body li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  border-bottom: solid 1px #dfe4f0;
+  border-left: solid 1px #dfe4f0;
+}
+
+.forecast-item p {
+  font-weight: bold;
+  color: rgb(86, 86, 86);
+}
+
+.weater-data-unit {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.weather-icon {
+  display: block;
+  margin: 0 auto;
+  width: 60px;
+  height: 60px;
+}
+
+/* 横スクロールバーのスタイルをカスタマイズ */
+.forecast-list-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.forecast-list-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.forecast-list-container::-webkit-scrollbar-track {
+  background-color: #f9f9f9;
+}
+
+.wind-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wind-arrow {
+  width: 19px;
+  height: 23px;
+}

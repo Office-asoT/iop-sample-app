@@ -1,0 +1,70 @@
+.side-menu {
+  width: 200px;
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.side-menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.side-menu-item {
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #555;
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.side-menu-item-icon {
+  font-size: 24px;
+  margin-right: 3px;
+}
+
+.side-menu-item-text {
+  font-size: 20px;
+}
+
+.side-menu-item:hover {
+  background-color: #666;
+}
+
+.side-menu-list a {
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .side-menu {
+    position: fixed;
+    /* 画面全体に固定 */
+    top: 50px;
+    left: 0;
+    height: 100vh;
+    width: 200px;
+    transform: translateX(-100%);
+    /* デフォルトは左に隠す */
+    transition: transform 0.3s ease;
+    z-index: 999;
+    /* 画面手前に表示 */
+  }
+
+  .side-menu.open {
+    transform: translateX(0%);
+    /* open時に表示 */
+  }
+}

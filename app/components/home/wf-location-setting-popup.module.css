@@ -1,0 +1,64 @@
+/* 背景のオーバーレイ */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* ポップアップ本体 */
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  text-align: center;
+  /* position: relative; */
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.popup-title {
+  color: gray;
+}
+
+.popup-container select {
+  width: 80%;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+
+/* ボタンの配置 */
+.button-group {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-group button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+/* 例: ホバー時のスタイル */
+.button-group button:hover {
+  background-color: #eee;
+}

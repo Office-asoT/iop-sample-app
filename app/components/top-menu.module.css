@@ -1,0 +1,48 @@
+.top-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4ea377;
+  color: #fff;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .top-menu {
+    justify-content: center;
+    /* 中央揃え */
+    position: relative;
+    /* ハンバーガーメニューを左に配置するため */
+  }
+
+  .menu-button {
+    display: block;
+    /* モバイル時に表示 */
+    position: absolute;
+    left: 20px;
+    /* 左側に固定配置 */
+    top: 50%;
+    /* 縦位置調整 */
+    transform: translateY(-50%);
+  }
+
+  .site-title {
+    text-align: center;
+    /* タイトルを中央揃え */
+  }
+}

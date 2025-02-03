@@ -1,7 +1,6 @@
 .side-menu {
   width: 200px;
   background-color: #444;
-  color: #fff;
   padding: 10px;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -9,25 +8,28 @@
 }
 
 .side-menu-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
 }
 
 .side-menu-item {
-  margin: 10px 0;
-  cursor: pointer;
-  padding: 10px;
   background-color: #555;
+}
+
+.side-menu-item:hover {
+  background-color: #666;
+}
+
+.side-menu-item > a {
+  cursor: pointer;
   color: white;
   border-radius: 4px;
   text-align: center;
-  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
+  height: 70px;
 }
 
 .side-menu-item-icon {
@@ -37,15 +39,6 @@
 
 .side-menu-item-text {
   font-size: 20px;
-}
-
-.side-menu-item:hover {
-  background-color: #666;
-}
-
-.side-menu-list a {
-  color: white;
-  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {

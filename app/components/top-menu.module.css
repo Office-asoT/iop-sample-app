@@ -8,11 +8,6 @@
   font-size: 20px;
 }
 
-.site-title {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
 .menu-button {
   background: none;
   border: none;
@@ -39,10 +34,5 @@
     top: 50%;
     /* 縦位置調整 */
     transform: translateY(-50%);
-  }
-
-  .site-title {
-    text-align: center;
-    /* タイトルを中央揃え */
   }
 }

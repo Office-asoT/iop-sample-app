@@ -9,5 +9,6 @@ export default [
   layout("layouts/main-layout.tsx", [
     index("routes/home.tsx"),
     route("weather-forecast/edit", "routes/edit-weather-forecast.tsx"),
+    route("delivery-email-address", "routes/delivery-email-address.tsx"),
   ]),
 ] satisfies RouteConfig;

@@ -8,7 +8,7 @@
 
 .weather-forecast h2 {
   font-size: 1.2em;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
 .home-sub-header {
@@ -25,15 +25,12 @@
   padding: 0 10px;
 }
 
-.home-sub-header .material-icons:first-child {
+.home-sub-header > span:first-child {
   margin-right: 8px;
 }
 
-.home-sub-header .material-icons:nth-child(2) {
+.home-sub-header > span:nth-child(3) {
   position: absolute;
   right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
   cursor: pointer;
-  z-index: 1;
 }

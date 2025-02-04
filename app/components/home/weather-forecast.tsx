@@ -17,16 +17,17 @@ export default function WeatherForecast({ municipalities, selectedMunicipality, 
     <div className={styles.weatherForecast}>
       {selectedMunicipality && (
         <>
+          {isPopupOpen && (
+            <WFLocationSettingPopup
+              municipalities={municipalities}
+              onClose={togglePopup}
+              currentMunicipality={selectedMunicipality}
+            />
+          )}
           <div className={styles.homeSubHeader}>
-            <span className="material-icons">sunny</span>気象情報
+            <span className="material-icons">sunny</span>
+            <span>気象情報</span>
             <span className="material-icons" onClick={togglePopup}>settings</span>
-            {isPopupOpen && (
-              <WFLocationSettingPopup
-                municipalities={municipalities}
-                onClose={togglePopup}
-                currentMunicipality={selectedMunicipality}
-              />
-            )}
           </div>
           <h2>{selectedMunicipality.name}</h2>
           <Suspense fallback={<p>Loading...</p>}>

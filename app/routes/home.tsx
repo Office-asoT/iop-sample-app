@@ -7,13 +7,6 @@ const getSelectedMunicipality = async (userId: string) => {
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data.municipality;
-
-  // const stored = localStorage.getItem("selectedCity");
-  // if (!stored) {
-  //   localStorage.setItem("selectedCity", JSON.stringify(DEFAULT_CITY));
-  //   return DEFAULT_CITY;
-  // }
-  // return JSON.parse(stored);
 }
 
 const getMunicipalities = async () => {

@@ -1,0 +1,31 @@
+.container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+  border: solid 1px gray;
+  border-top: 0;
+}
+
+.header {
+  border-top: solid 1px gray;
+  border-bottom: solid 1px gray;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: cadetblue;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 10px;
+}
+
+.header>span:first-child {
+  margin-right: 8px;
+}
+
+.header>span:nth-child(3) {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}

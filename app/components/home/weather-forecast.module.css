@@ -1,36 +1,4 @@
-.weather-forecast {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 20px;
-  border: solid 1px gray;
-  border-top: 0;
-}
-
-.weather-forecast h2 {
+.weather-forecast > h2 {
   font-size: 1.2em;
   margin: 20px;
-}
-
-.home-sub-header {
-  border-top: solid 1px gray;
-  border-bottom: solid 1px gray;
-  font-size: 1.5em;
-  font-weight: bold;
-  background-color: cadetblue;
-  color:aliceblue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 0 10px;
-}
-
-.home-sub-header > span:first-child {
-  margin-right: 8px;
-}
-
-.home-sub-header > span:nth-child(3) {
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
 }

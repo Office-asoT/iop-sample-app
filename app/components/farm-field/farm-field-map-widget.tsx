@@ -12,7 +12,7 @@ import Overlay from "ol/Overlay";
 import { boundingExtent } from "ol/extent";
 
 export class FarmFieldMapWidget {
-  constructor(domNode, farmFieldList) {
+  constructor(domNode, farmFieldList, onSelectLocation) {
     this.map = new Map({
       target: domNode,
       layers: [
@@ -24,7 +24,7 @@ export class FarmFieldMapWidget {
     });
 
     // ピンの座標を変換
-    const coordinates = farmFieldList.map((location) => fromLonLat(location.geocode));
+    const coordinates = farmFieldList.map((location) => fromLonLat([location.longitude, location.latitude]));
 
     // 全体を表示するためのビュー範囲を設定
     const extent = boundingExtent(coordinates);
@@ -33,7 +33,7 @@ export class FarmFieldMapWidget {
     // ピンの作成
     const features = farmFieldList.map((location) => {
       const feature = new Feature({
-        geometry: new Point(fromLonLat(location.geocode)),
+        geometry: new Point(fromLonLat([location.longitude, location.latitude])),
         name: location.name,
         address: location.address,
         crop: location.crop,
@@ -69,6 +69,20 @@ export class FarmFieldMapWidget {
       this.map.getTargetElement().style.cursor = hit ? "pointer" : "";
     });
 
+    // ピンをクリックしたときのイベント
+    this.map.on("click", (event) => {
+      const feature = this.map.forEachFeatureAtPixel(event.pixel, (feat) => feat);
+      if (feature) {
+        const selectedLocation = {
+          name: feature.get("name"),
+          address: feature.get("address"),
+          crop: feature.get("crop"),
+          plantingDate: feature.get("plantingDate"),
+          extensionOffice: feature.get("extensionOffice"),
+          jaFuelSupplier: feature.get("jaFuelSupplier")
+        };
+        onSelectLocation(selectedLocation);
+      }
+    });
   }
-
 }

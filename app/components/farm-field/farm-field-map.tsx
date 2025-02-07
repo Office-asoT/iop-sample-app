@@ -8,26 +8,8 @@ export default function FarmFieldMap({farmFieldList, onSelectLocation}) {
 
   useEffect(() => {
     if (mapRef.current === null) {
-      mapRef.current = new FarmFieldMapWidget(containerRef.current, farmFieldList);
+      mapRef.current = new FarmFieldMapWidget(containerRef.current, farmFieldList, onSelectLocation);
     }
-
-    const map = mapRef.current;
-
-    // ピンをクリックしたときのイベント
-    map.map.on("click", (event) => {
-      const feature = map.map.forEachFeatureAtPixel(event.pixel, (feat) => feat);
-      if (feature) {
-        const selectedLocation = {
-          name: feature.get("name"),
-          address: feature.get("address"),
-          crop: feature.get("crop"),
-          plantingDate: feature.get("plantingDate"),
-          extensionOffice: feature.get("extensionOffice"),
-          jaFuelSupplier: feature.get("jaFuelSupplier")
-        };
-        onSelectLocation(selectedLocation);
-      }
-    });
 
   }, [onSelectLocation]);
   return (

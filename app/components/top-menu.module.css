@@ -8,6 +8,11 @@
   font-size: 20px;
 }
 
+.app-name {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
 .menu-button {
   background: none;
   border: none;
@@ -16,6 +21,56 @@
   cursor: pointer;
   display: none;
 }
+
+.user-menu-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.userIcon {
+  font-size: 2rem;
+  margin-left: 3px;
+}
+
+.header-menu {
+  position: absolute;
+  top: 61px;
+  right: 0;
+  width: 12rem;
+  font-size: 1rem;
+  z-index: calc(infinity);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gl-text-color, #303030);
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.header-menu > li {
+  border-top: solid 1px #dbdbdb;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 56px;
+}
+
+.header-menu > li:hover {
+  background-color: #eee;
+}
+
+.header-menu > li > a {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @media screen and (max-width: 768px) {
   .top-menu {
@@ -34,5 +89,9 @@
     top: 50%;
     /* 縦位置調整 */
     transform: translateY(-50%);
+  }
+  .user-menu-button {
+    position: absolute;
+    right: 0.7rem;
   }
 }

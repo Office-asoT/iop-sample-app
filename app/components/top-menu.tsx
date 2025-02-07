@@ -4,12 +4,10 @@ import styles from "./top-menu.module.css";
 
 export default function TopMenu({ toggleMenu }) {
   const [showUserMenu, setShowUserMenu] = useState(false);
-
   const userMenuButtonRef = useRef(null);
   const userMenuRef = useRef(null);
 
   const clickOutside = event => {
-    console.log(userMenuButtonRef.current);
     if (userMenuButtonRef.current && userMenuButtonRef.current.contains(event.target)) return;
     if (!userMenuRef.current) return;
     if (userMenuRef.current.contains(event.target)) return;
@@ -35,7 +33,6 @@ export default function TopMenu({ toggleMenu }) {
     <nav className={styles.topMenu}>
       <div className={styles.appName}>サンプルアプリ</div>
       <div>
-        {/* PC時はメニューを横並びで表示してもOKだが、ここでは最小構成としてボタンのみ */}
         <button className={styles.menuButton} onClick={toggleMenu}>☰</button>
       </div>
       <div ref={userMenuButtonRef} className={styles.userMenuButton} onClick={handleShowMenu}>

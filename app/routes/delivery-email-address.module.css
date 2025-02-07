@@ -1,15 +1,23 @@
 .header{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 5px;
 }
 
 .title {
   font-size: 1.5em;
   font-weight: bold; 
+  display: flex;
+  align-items: center;
 }
 
-.button > button {
+.title-item-icon {
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+.edit-button {
   border-width: 0;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -27,6 +35,6 @@
   cursor: pointer;
 }
 
-.button > button:hover {
+.edit-button:hover {
   background-color: #eee;
 }

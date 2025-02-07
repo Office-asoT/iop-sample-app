@@ -20,11 +20,12 @@
   text-align: left;
 }
 
-.list > thead > tr > th {
+.list-th {
   border-bottom: 1px solid #ddd;
   padding: 0.5rem;
 }
-.list > tbody > tr > td {
+
+.list-td {
   border-bottom: 1px solid #ddd;
-  padding: 0.5rem;
+  padding: 0.8rem;
 }

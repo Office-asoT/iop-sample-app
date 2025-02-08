@@ -18,7 +18,7 @@ const getMunicipalities = async () => {
   return data;
 }
 
-const fetchWeatherForecast = async (latitude: number, longitude: number) => {
+const getWeatherForecast = async (latitude: number, longitude: number) => {
   try {
     const response = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation,weathercode,windspeed_10m,winddirection_10m&timezone=Asia/Tokyo`
@@ -71,9 +71,9 @@ const getTodaySensorsData = async (userId: string) => {
 export async function loader() {
   const userId = "hoge";
   const municipalities = await getMunicipalities();
-  const selectedMunicipality = await getSelectedMunicipality("hoge");
+  const selectedMunicipality = await getSelectedMunicipality(userId);
   const { latitude, longitude } = selectedMunicipality;
-  const weatherForecastPromise = fetchWeatherForecast(latitude, longitude);
+  const weatherForecastPromise = getWeatherForecast(latitude, longitude);
   const latestSensorsDataPromise = getLatestSensorsData(userId);
   const todaySensorsDataPromise = getTodaySensorsData(userId);
 

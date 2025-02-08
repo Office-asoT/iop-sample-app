@@ -1,5 +1,6 @@
 import WeatherForecast from "~/components/home/weather-forecast";
 import CurrentValue from "~/components/home/current-value/current-value";
+import EnvironmentGraph from "~/components/home/environment-graph/environment-graph";
 
 import type { Route } from "./+types/home";
 
@@ -56,6 +57,17 @@ const getLatestSensorsData = async (userId: string) => {
   return data;
 }
 
+const getTodaySensorsData = async (userId: string) => {
+  const params = new URLSearchParams({
+    start: (new Date((new Date(2025, 1, 5)).setHours(0, 0, 0, 0))).toISOString(),
+    end: (new Date((new Date(2025, 1, 5)).setHours(23, 59, 59, 999999))).toISOString(),
+  });
+  const response = await fetch(`http://localhost:8000/api/sensors_data/${userId}?${params}`);
+  if (response.status !== 200) throw response;
+  const data = await response.json();
+  return data;
+}
+
 export async function loader() {
   const userId = "hoge";
   const municipalities = await getMunicipalities();
@@ -63,12 +75,14 @@ export async function loader() {
   const { latitude, longitude } = selectedMunicipality;
   const weatherForecastPromise = fetchWeatherForecast(latitude, longitude);
   const latestSensorsDataPromise = getLatestSensorsData(userId);
+  const todaySensorsDataPromise = getTodaySensorsData(userId);
 
   return {
     municipalities,
     selectedMunicipality,
     weatherForecastPromise,
     latestSensorsDataPromise,
+    todaySensorsDataPromise,
   };
 }
 
@@ -80,6 +94,7 @@ export default function Home({
     selectedMunicipality,
     weatherForecastPromise,
     latestSensorsDataPromise,
+    todaySensorsDataPromise,
   } = loaderData;
   return (
     <div>
@@ -91,6 +106,9 @@ export default function Home({
       />
       <CurrentValue
         latestSensorsDataPromise={latestSensorsDataPromise}
+      />
+      <EnvironmentGraph
+        todaySensorsDataPromise={todaySensorsDataPromise}
       />
     </div>
   );

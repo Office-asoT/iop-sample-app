@@ -1,4 +1,5 @@
 import WeatherForecast from "~/components/home/weather-forecast";
+import CurrentValue from "~/components/home/current-value/current-value";
 
 import type { Route } from "./+types/home";
 
@@ -48,12 +49,27 @@ const fetchWeatherForecast = async (latitude: number, longitude: number) => {
   }
 };
 
+const getLatestSensorsData = async (userId: string) => {
+  const response = await fetch(`http://localhost:8000/api/sensors_data/${userId}/latest`);
+  if (response.status !== 200) throw response;
+  const data = await response.json();
+  return data;
+}
+
 export async function loader() {
+  const userId = "hoge";
   const municipalities = await getMunicipalities();
   const selectedMunicipality = await getSelectedMunicipality("hoge");
   const { latitude, longitude } = selectedMunicipality;
   const weatherForecastPromise = fetchWeatherForecast(latitude, longitude);
-  return { municipalities, selectedMunicipality, weatherForecastPromise };
+  const latestSensorsDataPromise = getLatestSensorsData(userId);
+
+  return {
+    municipalities,
+    selectedMunicipality,
+    weatherForecastPromise,
+    latestSensorsDataPromise,
+  };
 }
 
 export default function Home({
@@ -62,7 +78,8 @@ export default function Home({
   const {
     municipalities,
     selectedMunicipality,
-    weatherForecastPromise
+    weatherForecastPromise,
+    latestSensorsDataPromise,
   } = loaderData;
   return (
     <div>
@@ -71,6 +88,9 @@ export default function Home({
         municipalities={municipalities}
         selectedMunicipality={selectedMunicipality}
         weatherForecastPromise={weatherForecastPromise}
+      />
+      <CurrentValue
+        latestSensorsDataPromise={latestSensorsDataPromise}
       />
     </div>
   );

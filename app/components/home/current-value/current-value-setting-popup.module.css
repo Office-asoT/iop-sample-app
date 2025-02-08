@@ -1,0 +1,76 @@
+/* 背景のオーバーレイ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* ポップアップ本体 */
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.title {
+  color: gray;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab {
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid transparent;
+  width: 50%;
+  height: 50px;
+  background-color: #FFFFFF;
+}
+
+.active-tab {
+  background-color: #eee;
+}
+
+/* ボタンの配置 */
+.button-group {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-group button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+/* 例: ホバー時のスタイル */
+.button-group button:hover {
+  background-color: #eee;
+}

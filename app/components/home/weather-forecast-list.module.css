@@ -1,29 +1,13 @@
 .forecast-list-container {
   overflow-x: auto;
-  margin: 0 auto;
-  white-space: nowrap;
   display: flex;
-}
-
-.forecast-item {
-  padding: 0;
-  margin: 5px 0;
+  flex-direction: row;
 }
 
 .forecast-item-header {
   font-weight: bold;
-  background-color: #f4f4f4;
-  border-bottom: 1px solid #ddd;
-  list-style: none;
   display: flex;
-  position: relative;
   flex-direction: column;
-  width: 60px;
-  height: 100%;
-  background-color: cadetblue;
-  z-index: 2;
-  padding: 0;
-  margin: 5px 0;
   color: white;
 }
 
@@ -31,16 +15,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: cadetblue;
+  width: 60px;
   height: 60px;
   border-bottom: solid 1px #dfe4f0;
   border-left: solid 1px #dfe4f0;
-  padding: 0 8px;
 }
 
 .forecast-item-body {
-  position: relative;
   display: flex;
-  flex: 1;
+  flex-direction: row;
   overflow-y: hidden;
   overflow-x: scroll;
 }
@@ -53,6 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 60px;
   height: 60px;
   border-bottom: solid 1px #dfe4f0;
   border-left: solid 1px #dfe4f0;
@@ -70,7 +55,6 @@
 
 .weather-icon {
   display: block;
-  margin: 0 auto;
   width: 60px;
   height: 60px;
 }

@@ -1,4 +1,6 @@
 import WeatherForecast from "~/components/home/weather-forecast";
+import CurrentValue from "~/components/home/current-value/current-value";
+import EnvironmentGraph from "~/components/home/environment-graph/environment-graph";
 
 import type { Route } from "./+types/home";
 
@@ -7,13 +9,6 @@ const getSelectedMunicipality = async (userId: string) => {
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data.municipality;
-
-  // const stored = localStorage.getItem("selectedCity");
-  // if (!stored) {
-  //   localStorage.setItem("selectedCity", JSON.stringify(DEFAULT_CITY));
-  //   return DEFAULT_CITY;
-  // }
-  // return JSON.parse(stored);
 }
 
 const getMunicipalities = async () => {
@@ -23,7 +18,7 @@ const getMunicipalities = async () => {
   return data;
 }
 
-const fetchWeatherForecast = async (latitude: number, longitude: number) => {
+const getWeatherForecast = async (latitude: number, longitude: number) => {
   try {
     const response = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation,weathercode,windspeed_10m,winddirection_10m&timezone=Asia/Tokyo`
@@ -55,12 +50,40 @@ const fetchWeatherForecast = async (latitude: number, longitude: number) => {
   }
 };
 
+const getLatestSensorsData = async (userId: string) => {
+  const response = await fetch(`http://localhost:8000/api/sensors_data/${userId}/latest`);
+  if (response.status !== 200) throw response;
+  const data = await response.json();
+  return data;
+}
+
+const getTodaySensorsData = async (userId: string) => {
+  const params = new URLSearchParams({
+    start: (new Date((new Date(2025, 1, 5)).setHours(0, 0, 0, 0))).toISOString(),
+    end: (new Date((new Date(2025, 1, 5)).setHours(23, 59, 59, 999999))).toISOString(),
+  });
+  const response = await fetch(`http://localhost:8000/api/sensors_data/${userId}?${params}`);
+  if (response.status !== 200) throw response;
+  const data = await response.json();
+  return data;
+}
+
 export async function loader() {
+  const userId = "hoge";
   const municipalities = await getMunicipalities();
-  const selectedMunicipality = await getSelectedMunicipality("hoge");
+  const selectedMunicipality = await getSelectedMunicipality(userId);
   const { latitude, longitude } = selectedMunicipality;
-  const weatherForecastPromise = fetchWeatherForecast(latitude, longitude);
-  return { municipalities, selectedMunicipality, weatherForecastPromise };
+  const weatherForecastPromise = getWeatherForecast(latitude, longitude);
+  const latestSensorsDataPromise = getLatestSensorsData(userId);
+  const todaySensorsDataPromise = getTodaySensorsData(userId);
+
+  return {
+    municipalities,
+    selectedMunicipality,
+    weatherForecastPromise,
+    latestSensorsDataPromise,
+    todaySensorsDataPromise,
+  };
 }
 
 export default function Home({
@@ -69,7 +92,9 @@ export default function Home({
   const {
     municipalities,
     selectedMunicipality,
-    weatherForecastPromise
+    weatherForecastPromise,
+    latestSensorsDataPromise,
+    todaySensorsDataPromise,
   } = loaderData;
   return (
     <div>
@@ -78,6 +103,12 @@ export default function Home({
         municipalities={municipalities}
         selectedMunicipality={selectedMunicipality}
         weatherForecastPromise={weatherForecastPromise}
+      />
+      <CurrentValue
+        latestSensorsDataPromise={latestSensorsDataPromise}
+      />
+      <EnvironmentGraph
+        todaySensorsDataPromise={todaySensorsDataPromise}
       />
     </div>
   );

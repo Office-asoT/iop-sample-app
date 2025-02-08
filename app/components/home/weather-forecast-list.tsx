@@ -43,7 +43,7 @@ export default function WeatherForecastList({ weatherForecastPromise }) {
       </ul>
       <div className={styles.forecastItemBody}>
         {weatherForecastData.map((hour, index) => (
-          <ul className={styles.forecastItem} key={index}>
+          <ul key={index}>
             <li>
               <p>{new Date(hour.time).toLocaleString('ja-JP', {
                 month: '2-digit',

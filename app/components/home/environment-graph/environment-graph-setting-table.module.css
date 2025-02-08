@@ -1,0 +1,24 @@
+.container {
+  width: 40vw;
+  height: 30vh;
+  overflow: scroll;
+  margin-bottom: 1rem;
+}
+
+.container > table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.container > table > tbody > tr > td {
+  height: 40px;
+  border-top: 1px solid #ddd;
+}
+
+.container > table > thead > tr > th {
+  border-bottom: 1px solid #ddd;
+}
+
+.container > table > tbody > tr > td {
+  padding: 0 8px 0 8px;
+}

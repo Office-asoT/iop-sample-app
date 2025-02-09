@@ -1,0 +1,31 @@
+.title-container {
+  display: flex;
+  justify-content: center;
+}
+
+.title-container .title {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem 0;
+  border-bottom: 0.2rem solid #303030;
+  padding-bottom: 0.2rem;
+  width: 11rem;
+}
+
+.list {
+  gap: 1rem;
+  margin: 2rem 0;
+  width: 100%;
+  text-align: left;
+}
+
+.list-th {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem;
+}
+
+.list-td {
+  border-bottom: 1px solid #ddd;
+  padding: 0.8rem;
+}

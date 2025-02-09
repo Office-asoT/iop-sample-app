@@ -48,7 +48,7 @@ export default function TopMenu({ toggleMenu }) {
               </Link>
             </li>
             <li>
-              <Link to="/fuel-order-ja" onClick={closeMenu}>
+              <Link to="/fuel-order-target-ja" onClick={closeMenu}>
                 <span className={`material-icons ${styles.sideMenuItemIcon}`}>local_gas_station</span>
                 <span className={styles.deliveryEmail}>燃料発注先JA</span>
               </Link>

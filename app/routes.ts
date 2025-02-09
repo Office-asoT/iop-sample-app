@@ -15,5 +15,8 @@ export default [
     route("delivery-email-address/delete", "routes/delete-delivery-email-address.tsx"),
     route("delivery-email-address/send-test-mail", "routes/send-test-mail-delivery-email-address.tsx"),
     route("farm-field", "routes/farm-field.tsx"),
+    route("fuel-order-target-ja", "routes/fuel-order-target-ja.tsx"),
+    route("fuel-order-target-ja/edit", "routes/edit-fuel-order-target-ja.tsx"),
+    route("fuel-order-target-ja/update", "routes/update-fuel-order-target-ja.tsx"),
   ]),
 ] satisfies RouteConfig;

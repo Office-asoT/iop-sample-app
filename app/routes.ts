@@ -23,5 +23,7 @@ export default [
     route("fuel-order", "routes/fuel-order.tsx"),
     route("fuel-order/create", "routes/create-fuel-order.tsx"),
     route("fuel-order/cancel", "routes/cancel-fuel-order.tsx"),
+    route("graph", "routes/graph.tsx"),
+    route("graph/edit", "routes/edit-graph.tsx"),
   ]),
 ] satisfies RouteConfig;

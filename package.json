@@ -14,12 +14,12 @@
     "isbot": "^5.1.17",
     "leaflet": "^1.9.4",
     "ol": "^10.3.1",
-    "openlayers": "^4.6.5",
     "plotly.js": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-plotly.js": "^2.6.0",
-    "react-router": "^7.1.5"
+    "react-router": "^7.1.5",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@react-router/dev": "^7.1.5",

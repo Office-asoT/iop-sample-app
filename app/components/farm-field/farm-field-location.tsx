@@ -32,7 +32,7 @@ export default function FarmFieldLocation({ location }) {
           </tr>
           <tr>
             <th>燃料発注先のJA</th>
-            <td>{location.jaFuelSupplier}</td>
+            <td>{location.jaBranchOfficeName}</td>
           </tr>
         </tbody>
       </table>

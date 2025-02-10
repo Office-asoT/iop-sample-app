@@ -20,5 +20,8 @@ export default [
     route("fuel-order-target-ja", "routes/fuel-order-target-ja.tsx"),
     route("fuel-order-target-ja/edit", "routes/edit-fuel-order-target-ja.tsx"),
     route("fuel-order-target-ja/update", "routes/update-fuel-order-target-ja.tsx"),
+    route("fuel-order", "routes/fuel-order.tsx"),
+    route("fuel-order/create", "routes/create-fuel-order.tsx"),
+    route("fuel-order/cancel", "routes/cancel-fuel-order.tsx"),
   ]),
 ] satisfies RouteConfig;

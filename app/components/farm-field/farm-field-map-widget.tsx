@@ -39,7 +39,7 @@ export class FarmFieldMapWidget {
         crop: location.crop,
         plantingDate: location.plantingDate,
         extensionOffice: location.extensionOffice,
-        jaFuelSupplier: location.jaFuelSupplier
+        jaBranchOfficeName: location.ja_branch_office_name
       });
 
       feature.setStyle(
@@ -79,7 +79,7 @@ export class FarmFieldMapWidget {
           crop: feature.get("crop"),
           plantingDate: feature.get("plantingDate"),
           extensionOffice: feature.get("extensionOffice"),
-          jaFuelSupplier: feature.get("jaFuelSupplier")
+          jaBranchOfficeName: feature.get("jaBranchOfficeName")
         };
         onSelectLocation(selectedLocation);
       }

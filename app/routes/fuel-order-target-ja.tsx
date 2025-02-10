@@ -4,6 +4,7 @@ import type { Route } from "./+types/fuel-order-target-ja";
 import styles from "./fuel-order-target-ja.module.css";
 
 const getfuelOrderTargetJaList = async (userId: string) => {
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
   const response = await fetch(`http://${host}:8000/api/fuel_order_target_jas/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();

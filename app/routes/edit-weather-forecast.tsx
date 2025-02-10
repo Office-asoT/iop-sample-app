@@ -8,7 +8,8 @@ export async function action({
   const formData = await request.formData();
   const userId = formData.get("userId");
   const municipalityCode = formData.get("municipalityCode");
-  await fetch(`http://localhost:8000/api/weather_forecast_settings/${userId}`, {
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  await fetch(`http://${host}:8000/api/weather_forecast_settings/${userId}`, {
     method: "PATCH",
     headers: {
       'Content-Type': 'application/json',

@@ -17,7 +17,8 @@ export async function action({
     });
   }
 
-  const response = await fetch(`http://localhost:8000/api/fuel_order_target_jas/${userId}`, {
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/fuel_order_target_jas/${userId}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

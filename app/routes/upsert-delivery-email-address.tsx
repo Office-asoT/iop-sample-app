@@ -14,9 +14,10 @@ export async function action({
       "email_address": rawData[i + 1][1],
     });
   }
-  
+
   const userId = "hoge";
-  const response = await fetch(`http://localhost:8000/api/delivery_email_address/${userId}`, {
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/delivery_email_address/${userId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

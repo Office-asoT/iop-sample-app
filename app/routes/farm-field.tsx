@@ -5,7 +5,8 @@ import styles from "./farm-field.module.css";
 import type { Route } from "./+types/farm-field";
 
 const getFarmFieldList = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/farm_fields/${userId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/farm_fields/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;

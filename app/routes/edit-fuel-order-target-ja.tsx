@@ -3,22 +3,25 @@ import type { Route } from "./+types/edit-fuel-order-target-ja";
 import styles from "./fuel-order-target-ja.module.css";
 
 const getfuelOrderTargetJaList = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/fuel_order_target_jas/${userId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/fuel_order_target_jas/${userId}`);
   if (response.status !== 200) throw response;
-  
+
   const data = await response.json();
   return data;
 }
 
 const getFarmFieldList = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/farm_fields/${userId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/farm_fields/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;
 }
 
 const getJaBranchOfficeList = async () => {
-  const response = await fetch(`http://localhost:8000/api/ja_branch_offices`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/ja_branch_offices`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;

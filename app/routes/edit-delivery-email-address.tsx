@@ -4,7 +4,8 @@ import EditDeliveryEmailAddressFromList from "~/components/delivery-email/edit-d
 import styles from "./delivery-email-address.module.css";
 
 const getSelecteDeleveryEmailAddress = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/delivery_email_address/${userId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/delivery_email_address/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;
@@ -19,11 +20,12 @@ export async function action({
   request
 }: Route.ActionArgs) {
   const formData = await request.formData();
-  
+
   const userId = "hoge";
   const emailAddress = formData.get("emailAddress");
 
-  const response = await fetch(`http://localhost:8000/api/send_test_mail/${userId}`, {
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/send_test_mail/${userId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

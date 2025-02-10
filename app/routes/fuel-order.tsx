@@ -23,21 +23,23 @@ const convertKeysToCamelCase = (obj) => {
   return obj;
 };
 const getfuelOrderList = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/fuel_orders/${userId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/fuel_orders/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;
 }
 
 const getfuelOrderTargetJaList = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/fuel_order_target_jas/${userId}`);
+  const response = await fetch(`http://${host}:8000/api/fuel_order_target_jas/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;
 }
 
 const getFarmFieldList = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/farm_fields/${userId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/farm_fields/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;
@@ -67,7 +69,7 @@ export default function FuelOrder({
     farmFieldList
   } = loaderData;
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  
+
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
   };

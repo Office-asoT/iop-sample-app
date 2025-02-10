@@ -4,7 +4,8 @@ import type { Route } from "./+types/delivery-email-address";
 import styles from "./delivery-email-address.module.css";
 
 const getSelecteDeleveryEmailAddress = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/delivery_email_address/${userId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/delivery_email_address/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data.map(({ delivery_name, email_address }) => ({
@@ -34,7 +35,7 @@ export default function DeliveryEmailAddress({
           <Link className={styles.editButton} to="/delivery-email-address/edit">登録・編集</Link>
         </div>
       </div>
-      
+
       <DeliveryEmailAddressList deliveryEmailAddresses={deliveryEmailAddresses}/>
     </div>
   );

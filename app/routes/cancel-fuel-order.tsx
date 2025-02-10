@@ -14,7 +14,8 @@ export async function action({
   const fuelType = formData.get("fuelType");
   const quantity = formData.get("quantity");
 
-  const response = await fetch(`http://localhost:8000/api/fuel_order/${userId}`, {
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/fuel_order/${userId}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -28,13 +29,14 @@ export async function action({
   let message = "燃料発注依頼のキャンセルに失敗しました。"
   if (200 == response.status) {
     const data = await response.json();
-    
-    const mailResponse = await fetch(`http://localhost:8000/api/send_cancel_fuel_order_mail/${userId}`, {
+
+    const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+    const mailResponse = await fetch(`http://${host}:8000/api/send_cancel_fuel_order_mail/${userId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      
+
       body: JSON.stringify({
         "email_address": jaBranchOfficeEmailAddress,
         "ja_branch_office_name": jaBranchOfficeName,

@@ -5,14 +5,16 @@ import EnvironmentGraph from "~/components/home/environment-graph/environment-gr
 import type { Route } from "./+types/home";
 
 const getSelectedMunicipality = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/weather_forecast_settings/${userId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/weather_forecast_settings/${userId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data.municipality;
 }
 
 const getMunicipalities = async () => {
-  const response = await fetch("http://localhost:8000/api/municipalities");
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/municipalities`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;
@@ -21,7 +23,7 @@ const getMunicipalities = async () => {
 const getWeatherForecast = async (latitude: number, longitude: number) => {
   try {
     const response = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation,weathercode,windspeed_10m,winddirection_10m&timezone=Asia/Tokyo`
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation,weathercode,windspeed_10m,winddirection_10m&timezone=Asia/Tokyo`,
     );
 
     if (response.status !== 200) throw response;
@@ -51,7 +53,8 @@ const getWeatherForecast = async (latitude: number, longitude: number) => {
 };
 
 const getLatestSensorsData = async (userId: string) => {
-  const response = await fetch(`http://localhost:8000/api/sensors_data/${userId}/latest`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/sensors_data/${userId}/latest`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;
@@ -62,7 +65,8 @@ const getTodaySensorsData = async (userId: string) => {
     start: (new Date((new Date(2025, 1, 5)).setHours(0, 0, 0, 0))).toISOString(),
     end: (new Date((new Date(2025, 1, 5)).setHours(23, 59, 59, 999999))).toISOString(),
   });
-  const response = await fetch(`http://localhost:8000/api/sensors_data/${userId}?${params}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/sensors_data/${userId}?${params}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;

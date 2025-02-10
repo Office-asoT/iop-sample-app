@@ -1,6 +1,6 @@
 import { redirect } from "react-router";
 
-import type { Route } from "./+types/edit-current-value";
+import type { Route } from "./+types/edit-environment-graph";
 
 const buildPostData = (currentSetting, visible) => {
   const currentEnvironmentGraphSetting = currentSetting["home"]["environment-graph"];
@@ -14,7 +14,8 @@ const buildPostData = (currentSetting, visible) => {
 }
 
 const getDisplaySetting = async (userId: string, farmFieldId: string) => {
-  const response = await fetch(`http://localhost:8000/api/display_settings/${userId}/${farmFieldId}`);
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  const response = await fetch(`http://${host}:8000/api/display_settings/${userId}/${farmFieldId}`);
   if (response.status !== 200) throw response;
   const data = await response.json();
   return data;
@@ -31,7 +32,8 @@ export async function action({
   const { setting: currentSetting } = await getDisplaySetting(userId, farmFieldId);
   const postData = buildPostData(currentSetting, visible);
 
-  await fetch(`http://localhost:8000/api/display_settings/${userId}/${farmFieldId}`, {
+  const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
+  await fetch(`http://${host}:8000/api/display_settings/${userId}/${farmFieldId}`, {
     method: "PATCH",
     headers: {
       'Content-Type': 'application/json',

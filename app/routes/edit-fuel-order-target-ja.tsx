@@ -1,6 +1,7 @@
+import PageHeader from "~/components/page-header";
 import EditFuelOrderTargetJAFormList from "~/components/fuel-order-target-ja/edit-fuel-order-target-ja-form-list";
+
 import type { Route } from "./+types/edit-fuel-order-target-ja";
-import styles from "./fuel-order-target-ja.module.css";
 
 const getfuelOrderTargetJaList = async (userId: string) => {
   const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
@@ -47,11 +48,10 @@ export default function EditFuelOrderTargetJa({
   } = loaderData;
   return (
     <div>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <span className={`material-icons ${styles.titleItemIcon}`}>local_gas_station</span><span>燃料発注先JAの編集</span>
-        </div>
-      </div>
+      <PageHeader
+        title="燃料発注先JAの編集"
+        iconName="local_gas_station"
+      />
       <EditFuelOrderTargetJAFormList
         fuelOrderTargetList={nameMergeFuelOrderTargetList}
         jaBranchOfficeList={jaBranchOfficeList}

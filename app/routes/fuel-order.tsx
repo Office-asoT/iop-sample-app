@@ -1,8 +1,10 @@
 import { useState } from "react";
+
+import PageHeader from "~/components/page-header";
 import FuelOrderCreatePopup from "~/components/fuel-order/fule-order-create-popup";
 import FuelOrderList from "~/components/fuel-order/fuel-order-list";
+
 import type { Route } from "./+types/fuel-order";
-import styles from "./fuel-order.module.css";
 
 // スネークケースをキャメルケースに変換する関数
 const toCamelCase = (str) => {
@@ -76,14 +78,12 @@ export default function FuelOrder({
 
   return (
     <div>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <span className={`material-icons ${styles.titleItemIcon}`}>local_gas_station</span><span>燃料発注先JA</span>
-        </div>
-        <div>
-          <button className={styles.createButton} onClick={togglePopup} >新規発注</button>
-        </div>
-      </div>
+      <PageHeader
+        title="燃料発注先JA"
+        iconName="local_gas_station"
+        buttonText="新規発注"
+        onClickButton={togglePopup}
+      />
       {isPopupOpen && (
         <FuelOrderCreatePopup
           farmFieldList={farmFieldList}

@@ -1,3 +1,4 @@
+import PageHeader from "~/components/page-header";
 import WeatherForecast from "~/components/home/weather-forecast";
 import CurrentValue from "~/components/home/current-value/current-value";
 import EnvironmentGraph from "~/components/home/environment-graph/environment-graph";
@@ -102,7 +103,10 @@ export default function Home({
   } = loaderData;
   return (
     <div>
-      <h2>ホーム</h2>
+      <PageHeader
+        title="ホーム"
+        iconName="home"
+      />
       <WeatherForecast
         municipalities={municipalities}
         selectedMunicipality={selectedMunicipality}

@@ -1,7 +1,7 @@
-import { Link } from "react-router";
+import PageHeader from "~/components/page-header";
 import DeliveryEmailAddressList from "~/components/delivery-email/delivery-email-address-list";
+
 import type { Route } from "./+types/delivery-email-address";
-import styles from "./delivery-email-address.module.css";
 
 const getSelecteDeleveryEmailAddress = async (userId: string) => {
   const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
@@ -27,16 +27,13 @@ export default function DeliveryEmailAddress({
   } = loaderData;
   return (
     <div>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <span className={`material-icons ${styles.titleItemIcon}`}>mail</span><span>配信先メールアドレス</span>
-        </div>
-        <div>
-          <Link className={styles.editButton} to="/delivery-email-address/edit">登録・編集</Link>
-        </div>
-      </div>
-
-      <DeliveryEmailAddressList deliveryEmailAddresses={deliveryEmailAddresses}/>
+      <PageHeader
+        title="配信先メールアドレス"
+        iconName="mail"
+        linkTo="/delivery-email-address/edit"
+        linkText="登録・編集"
+      />
+      <DeliveryEmailAddressList deliveryEmailAddresses={deliveryEmailAddresses} />
     </div>
   );
 }

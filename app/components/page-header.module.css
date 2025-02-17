@@ -5,19 +5,7 @@
   padding: 5px;
 }
 
-.header .title {
-  font-size: 1.5em;
-  font-weight: bold; 
-  display: flex;
-  align-items: center;
-}
-
-.title-item-icon {
-  font-size: 2rem;
-  margin-right: 5px;
-}
-
-.edit-button {
+.button {
   border-width: 0;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -26,6 +14,7 @@
   background-color: transparent;
   line-height: 1rem;
   color: #303030;
+  fill: currentColor;
   box-shadow: inset 0 0 0 1px #bfbfbf;
   display: flex;
   justify-content: center;
@@ -36,6 +25,6 @@
   width: 100px;
 }
 
-.edit-button:hover {
+.button:hover {
   background-color: #eee;
 }

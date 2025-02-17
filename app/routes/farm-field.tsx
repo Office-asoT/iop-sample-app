@@ -1,7 +1,9 @@
 import { useState } from "react";
+
+import PageHeader from "~/components/page-header";
 import FarmFieldMap from "~/components/farm-field/farm-field-map";
 import FarmFieldLocation from "~/components/farm-field/farm-field-location";
-import styles from "./farm-field.module.css";
+
 import type { Route } from "./+types/farm-field";
 
 const getFarmFieldList = async (userId: string) => {
@@ -24,7 +26,10 @@ export default function FarmField({
   const [selectedLocation, setSelectedLocation] = useState(null);
   return (
     <div>
-      <h2 className={styles.title}>圃場</h2>
+      <PageHeader
+        title="圃場"
+        iconName="gite"
+      />
       <FarmFieldMap
         farmFieldList={farmFieldList}
         onSelectLocation={setSelectedLocation}

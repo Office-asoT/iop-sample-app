@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-import type { Route } from "./+types/edit-delivery-email-address";
+
+import PageHeader from "~/components/page-header";
 import EditDeliveryEmailAddressFromList from "~/components/delivery-email/edit-delivery-email-address-form-list";
-import styles from "./delivery-email-address.module.css";
+
+import type { Route } from "./+types/edit-delivery-email-address";
 
 const getSelecteDeleveryEmailAddress = async (userId: string) => {
   const host = import.meta.env.VITE_IOP_SAMPLE_WEB_API_HOST;
@@ -57,11 +59,10 @@ export default function EditDeliveryEmailAddress({
 
   return (
     <div>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <span className={`material-icons ${styles.titleItemIcon}`}>mail</span><span>配信先メールアドレスの登録・編集</span>
-        </div>
-      </div>
+      <PageHeader
+        title="配信先メールアドレスの登録・編集"
+        iconName="mail"
+      />
       <EditDeliveryEmailAddressFromList deliveryEmailAddresses={deliveryEmailAddresses}/>
     </div>
   );

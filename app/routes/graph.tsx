@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetcher, useOutletContext } from "react-router";
 
+import PageHeader from "~/components/page-header";
 import GraphSettingPopup from "~/components/graph/graph-setting-popup";
 
 import type { Route } from "./+types/graph";
@@ -143,7 +144,10 @@ export default function Graph({
           onClose={togglePopup}
         />
       )}
-      <h2>グラフ</h2>
+      <PageHeader
+        title="グラフ"
+        iconName="query_stats"
+      />
       <div>
         <fetcher.Form method="post">
           <label>

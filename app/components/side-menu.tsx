@@ -25,8 +25,8 @@ export default function SideMenu({ isMenuOpen, closeMenu }) {
           </Link>
         </li>
         <li className={styles.sideMenuItem}>
-          <Link to="/warning-email" onClick={closeMenu}>
-            <span className={`material-icons ${styles.sideMenuItemIcon}`}>mail</span>
+          <Link to="/warning-mail" onClick={closeMenu}>
+            <span className={`material-icons ${styles.sideMenuItemIcon}`}>notifications_active</span>
             <span className={styles.sideMenuItemText}>警報メール</span>
           </Link>
         </li>

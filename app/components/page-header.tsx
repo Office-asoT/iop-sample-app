@@ -29,26 +29,24 @@ export default function PageHeader({
         title={title}
         iconName={iconName}
       />
-      {linkTo && linkText && (
-        <div>
+      <div className={styles.buttonsArea}>
+        {linkTo && linkText && (
           <Link
             className={styles.button}
             to={linkTo}
           >
             {linkText}
           </Link>
-        </div>
-      )}
-      {buttonText && onClickButton && (
-        <div>
+        )}
+        {buttonText && onClickButton && (
           <button
             className={styles.button}
             onClick={onClickButton}
           >
             {buttonText}
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

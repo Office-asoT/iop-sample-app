@@ -5,6 +5,12 @@
   padding: 5px;
 }
 
+.buttons-area {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .button {
   border-width: 0;
   padding-top: 0.5rem;

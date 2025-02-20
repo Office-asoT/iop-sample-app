@@ -25,5 +25,10 @@ export default [
     route("fuel-order/cancel", "routes/cancel-fuel-order.tsx"),
     route("graph", "routes/graph.tsx"),
     route("graph/edit", "routes/edit-graph.tsx"),
+    route("warning-mail", "routes/warning-mail.tsx"),
+    route("warning-mail/create", "routes/create-warning-mail.tsx"),
+    route("warning-mail/edit", "routes/edit-warning-mail.tsx"),
+    route("warning-mail/delete", "routes/delete-warning-mail.tsx"),
+    route("warning-history", "routes/warning-history.tsx"),
   ]),
 ] satisfies RouteConfig;
